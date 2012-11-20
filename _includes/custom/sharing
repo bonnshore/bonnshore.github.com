@@ -1,0 +1,18 @@
+ <p class="socialmedia">
+    <a href="http://weibo.com/bonnshore?wvr=3.6&lf=reg" title="我的微博" rel="me">
+	<img src="/assets/themes/twitter/img/socialmedia/weibo.png" title="我的微博" height="16" width="16"/>
+	@伯恩先生
+    </a>
+    <a href="http://www.renren.com/232319024/profile" title="我的人人" rel="me">
+	<img src="/assets/themes/twitter/img/socialmedia/renren.ico" title="我的人人" height="16" width="16"/>
+	Mr肖博闻
+    </a>
+    <a href="http://blog.csdn.net/bonnshore" title="我的CSDN" rel="me">
+	<img src="/assets/themes/twitter/img/socialmedia/csdn.png" title="我的CSDN" height="16" width="16"/>
+	bonnshore
+    </a>
+    <a href="#" title="关于我" rel="me">
+	<img src="/assets/themes/twitter/img/socialmedia/bonnshore.png" title="关于我" height="16" width="16">
+	关于我
+    </a>
+/p>

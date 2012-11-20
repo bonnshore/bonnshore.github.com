@@ -1,0 +1,72 @@
+<div class="page-header">
+    <h1>{{ page.title }} {%if page.tagline %} <small>ManShow并敞亮</small>{% endif %}</h1>
+    <div style="width:100%;margin-top:20px;">
+	 <p class="socialmedia">
+    <a href="http://weibo.com/bonnshore?wvr=3.6&lf=reg" title="我的微博" rel="me">
+	<img src="/assets/themes/twitter/img/socialmedia/weibo.png" title="我的微博" height="16" width="16"/>
+	@伯恩先生
+    </a>
+    <a href="http://www.renren.com/232319024/profile" title="我的人人" rel="me">
+	<img src="/assets/themes/twitter/img/socialmedia/renren.ico" title="我的人人" height="16" width="16"/>
+	Mr肖博闻
+    </a>
+    <a href="http://blog.csdn.net/bonnshore" title="我的CSDN" rel="me">
+	<img src="/assets/themes/twitter/img/socialmedia/csdn.png" title="我的CSDN" height="16" width="16"/>
+	bonnshore
+    </a>
+    <a href="http://github.com/bonnshore" title="GitHub" rel="me">
+	<img src="/assets/themes/twitter/img/socialmedia/github.ico" title="Github" height="16" width="16">
+	github
+    </a>
+    </p>
+    </div>
+</div>
+
+<div class="row">
+  <div style="width: 100%">
+      <div class="span7" style="width:65%; margin-left: 0px; margin-right: 0px; padding-right:0px;">
+        {{ content }}
+      </div>
+      <div class="span4 divbox" style="width=35%; float: right; margin-left: 0px; margin-right: 0px;padding-right:10px; color:#2C2C2C;">
+	<div style="width: 100%; float: right; margin-left: 0px; margin-right: 0px;">
+	{% include custom/searchbox %} 
+      </div>
+      
+      <div id="mc_embed_signup" style="width: 100%; float: right; margin-left: 0px; margin-right: 0px;">
+       
+        <div id="tab-content-wrapper">
+          <div>
+            <ul class="tag_box inline">
+              {% assign categories_list = site.categories %}
+              {% include JB/categories_list %}
+            </ul>
+
+            {% for category in site.categories %} 
+            <h2 id="{{ category[0] }}-ref">{{ category[0] | join: "/" }}</h2>
+            <ul>
+              {% assign pages_list = category[1] %}  
+              {% include JB/pages_list %}
+            </ul>
+            {% endfor %}
+          </div>
+
+          <div>
+            <ul class="tag_box inline">
+              {% assign tags_list = site.tags %}  
+              {% include JB/tags_list %}
+            </ul>
+
+            {% for tag in site.tags %} 
+            <h2 id="{{ tag[0] }}-ref">{{ tag[0] }}</h2>
+            <ul>
+              {% assign pages_list = tag[1] %}  
+              {% include JB/pages_list %}
+            </ul>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+      </div>     
+  </div>
+</div>
