@@ -3,7 +3,7 @@ layout: post
 title: "js日历插件 IE Chrome通过"
 description: "一个项目中，很多时候我们都需要选择时间的功能，一种能够将时间格式统一化的方法对于数据存储来说额为重要，然而使用一般文本框的形式或者下拉框的形式来完成这个功能的话就会比较繁琐，那么如何来用一个简单方法来实现这个功能呢，最理想的方式当然是使用日历控件了。"
 category: web 
-tags: [useful东东,jsp]
+tags: [useful东东, jsp]
 ---
 {% include JB/setup %}
 

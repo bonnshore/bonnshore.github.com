@@ -2,7 +2,7 @@
 layout: post
 category : lessons
 description: "Jekyll是一个帮助你快速搭建静态个人博客的轻量级解决方案，能够帮助你在不适用任何后台的情况下拥有自己的个人网站，她不像wordpress那样需要数据库，其实你所需要做的只是简单的写博客而已。当然如果你有兴致自己定制的话，还是要仔细研究与了解的。还有，我就不翻译了。"
-tags : [useful东东,jekyll,funny]
+tags : [useful东东, jekyll, funny]
 ---
 {% include JB/setup %}
 

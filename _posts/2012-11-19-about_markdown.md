@@ -3,7 +3,7 @@ layout: post
 title: "Markdown syntax & how does it works"
 description: "Markdown是你使用jekyll快速开发个人博客的得力助手，还在头疼那些烦人的缩进和源代码插入的效果问题吗？是时候看看这篇博客了哦，有了她你可以快速的完成你的个人博客，像写代码一样写博客吧。"
 category: learning
-tags : [markdown,useful东东,jekyll]
+tags : [markdown, useful东东, jekyll]
 ---
 {% include JB/setup %}
 
