@@ -46,7 +46,7 @@ Usage:
   {% endfor %}
   {% if posts_all.size > count %}
     <hr />
-    <a class="btn btn-primary" href="post_all.html" style="float:right; padding-left:30px; padding-right:30px;">查看更多</a>
+    <a class="btn btn-primary" href="post_all.html" style="float:right; padding-left:30px; padding-right:30px;">看看还有啥好东西>>></a>
   {% endif %}
 {% endif %}
 {% assign posts_all = nil %}
