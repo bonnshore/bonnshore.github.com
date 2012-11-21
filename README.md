@@ -9,5 +9,5 @@ tagline: ManShow or Geek
     email : bonnshore@gmail.com
     github : http://github.com/bonnshore
     weibo : @伯恩先生
-    fackbook: Bonnshore
+    facebook: Bonnshore
 
