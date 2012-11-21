@@ -11,7 +11,7 @@ pygments: true
 #
 title : Bonnshore's Blog
 tagline: ManShow or Geek
-author : bonnshore
+author :
   name : bonnshore
   email : bonnshore@gmail.com
   github : bonnshore
