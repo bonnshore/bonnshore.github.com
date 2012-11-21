@@ -57,3 +57,6 @@ P.S. If there is a standard (popular) changelog format, please let me know.
   Thank you everybody for dealing with the fast changes and helping
   me work out the API to a manageable state.
   
+- **0.0.1 : 2012.11.21**    
+    First personal blog public edition released. 
+    Thanks for JB, bootstrap, mceiba and Dearlittlebearpiggy.
