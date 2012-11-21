@@ -18,7 +18,8 @@ title : 所有的bonn都在这
     {% endif %}
 
     <dt>
-    <h3 style="margin-top:0px;margin-bottom:4px;color:#0b77b8;margin-right:40px;">{{ post.title }}</h3><span class="label" style="float:right; margin-left:10px; margin-right:5px;">{{ post.date | date: "%B %e, %Y" }}</span>
+    <a href="{{ BASE_PATH }}{{ post.url }}"><h3 style="margin-top:0px;margin-bottom:4px;color:#0b77b8;margin-right:40px;">{{ post.title }}</h3>&raquo; </a>
+    <span class="label" style="float:right; margin-left:10px; margin-right:5px;">{{ post.date | date: "%B %e, %Y" }}</span>
     <div class="thumbnail">
     <p>{{post.description}}</p>
     <span style="float:right; margin-right:10px; color:#0B77B8"><a href="{{ BASE_PATH }}{{ post.url }}">这里有全文&raquo; </a></span>
