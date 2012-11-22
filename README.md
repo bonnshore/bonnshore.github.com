@@ -11,3 +11,8 @@ tagline: ManShow or Geek
     weibo : @伯恩先生
     facebook: Bonnshore
 
+Wait to be realized:
+
+1.同时在线人数
+2.累计访问、当日访问
+3.音乐播放器
