@@ -1,6 +1,6 @@
 <form method="get" action="http://www.google.com/search" target="google_window" style="margin-bottom: 0px;">
 	<div>	
-		<input type="text" value=" 写啥都可以。。。 " name="q" />
+		<input type="text" value=" 介是站内搜索 " name="q" />
 		<input type="submit" name=”btnG” id="searchsubmit" value=" 搜搜更健康 " />
 	</div>
 	<input type="hidden" name="ie" value="UTF-8" />
