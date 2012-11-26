@@ -16,7 +16,7 @@ body {
 /* The white background content wrapper */
 .content {
   background:transparent;
-  background:rgba(255,255,255,.88);
+  background:rgba(255,255,255,.9);
   padding: 20px;
   margin: 0 0px; /* negative indent the amount of the padding to maintain the grid system */
   -webkit-border-radius: 0 0 6px 6px;
