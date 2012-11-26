@@ -3,7 +3,7 @@ layout: post
 title: "来说说我已经等了一年且已经上市了快一个月的AC3"
 description: "看完了中央六的电影，然后没有换台啊，现在电视上放的是第49届在台湾的金马奖颁奖典礼的转播，水都凉了还在泡脚，ZXJ嫌冷独自上楼了，这是第二篇，应该没有第一篇有营养，吐吐槽。"
 category: tittle-tattle
-tags: [是熊么, 游戏者]
+tags: [是熊么, 游戏者, 性敢]
 ---
 {% include JB/setup %}
 
