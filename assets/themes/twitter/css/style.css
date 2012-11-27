@@ -1,7 +1,7 @@
 /* Override some defaults */
 html,body{ background:transparent; }
 body {
-  background: url(../img/body.jpg) fixed;
+  background: url(../img/body.jpg) no-repeat fixed;
 }
 .navbar {
   margin-bottom: 0;
@@ -16,7 +16,7 @@ body {
 /* The white background content wrapper */
 .content {
   background:transparent;
-  background:rgba(255,255,255,.81);
+  background:rgba(255,255,255,.85);
   padding: 20px;
   margin: 0 0px; /* negative indent the amount of the padding to maintain the grid system */
   -webkit-border-radius: 0 0 6px 6px;
