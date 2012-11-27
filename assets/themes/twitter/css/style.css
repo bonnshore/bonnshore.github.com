@@ -1,7 +1,7 @@
 /* Override some defaults */
 html,body{ background:transparent; }
 body {
-  background: url(../img/body.jpg) no-repeat fixed;
+  background: url(../img/body.jpg) fixed;
 }
 .navbar {
   margin-bottom: 0;
