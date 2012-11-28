@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Python实现简易shell,我的coding_kit"
-description: "前一段时间突然想找一些脚本语言来了解，当时是确定了python和ruby两种脚本语言，对两者是大概的了解了一些，大家说法不一，各有各的好，于是就决定挨个儿来试试，于是就有了题目上这个蛋痛的东西。"
+description: "前一段时间突然想找一些脚本语言来了解，当时是确定了Python和Ruby两种脚本语言，对两者是大概的了解了一些，大家说法不一，各有各的好，于是就决定挨个儿来试试，于是就有了题目上这个蛋痛的东西。"
 category: learning 
 tags: [Python, 是熊么, funny]
 ---
@@ -21,18 +21,19 @@ tags: [Python, 是熊么, funny]
 
     import os
     import string
+
     class Dirlist:
-    def __init__(self):
-	return
+	def __init__(self):
+	    return
 
-    def get_current_list(self):
-	current_path = os.getcwd()
-	print string.join(os.listdir(current_path)).replace(' ','  ')
-	return
+	def get_current_list(self):
+	    current_path = os.getcwd()
+	    print string.join(os.listdir(current_path)).replace(' ','  ')
+	    return
 
-    def get_path_list(self,arg):
-	print string.join(os.listdir(arg)).replace(' ','  ')
-	return
+	def get_path_list(self,arg):
+	    print string.join(os.listdir(arg)).replace(' ','  ')
+	    return
 
 代码中可以看出主要的逻辑是使用了os.listdir()方法。实现也很简单，做了简单的现实效果处理。
 
