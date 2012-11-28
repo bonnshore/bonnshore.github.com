@@ -21,13 +21,13 @@ body{margin:0;font-family:"微软雅黑",Helvetica,Arial,sans-serif;font-size:13
 footer{margin:0;font-family:"微软雅黑",Helvetica,Arial,sans-serif;font-size:13px;line-height:18px;color:#000000;background:transparent;background:rgba(255,255,255,.6);}
 a{color:#0088cc;text-decoration:none;}
 a:hover{color:#005580;text-decoration:underline;}
-.row{margin-left:-20px;*zoom:1;}.row:before,.row:after{display:table;content:"";}
+.row{margin-left:-25px;margin-right:-15px;*zoom:1;}.row:before,.row:after{display:table;content:"";}
 .row:after{clear:both;}
 [class*="span"]{float:left;margin-left:20px;}
 .span1{width:60px;}
 .span2{width:140px;}
 .span3{width:220px;}
-.span4{width:250px;}
+.span4{width:275px;}
 .span5{width:380px;}
 .span6{width:460px;}
 .span7{width:540px;}
