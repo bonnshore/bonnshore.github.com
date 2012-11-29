@@ -6,11 +6,14 @@ group: navigation
 ---
 {% include JB/setup %}
 
-<ul class="tag_box inline">
-  {% assign categories_list = site.categories %}
-  {% include JB/categories_list %}
-</ul>
-
+<div id="tagDiv">
+    <ul class="tag_box inline">
+      {% assign categories_list = site.categories %}
+      {% include JB/categories_list %}
+    </ul>
+</div>
+<br>
+<br>
 
 {% for category in site.categories %} 
   <h2 id="{{ category[0] }}-ref">{{ category[0] | join: "/" }}</h2>

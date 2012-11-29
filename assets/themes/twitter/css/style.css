@@ -58,7 +58,7 @@ body {
 	padding: 3px 6px;
 	margin: 2px;
 	background: #eee;
-	color:#005F6B;
+	color:#273747;
 	border-radius: 3px;
 	text-decoration:none;
 }
@@ -67,7 +67,7 @@ body {
 	font-size:0.8em;
 }
 .tag_box a.active {
-	background:#57A957;
+	background:#101010;
 	border:1px solid #4C964D;
 	color:#FFF;
 }
