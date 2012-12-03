@@ -18,7 +18,7 @@ body {
   background:transparent;
   background:rgba(255,255,255,.85);
   padding: 20px;
-  margin: 0 -58px; /* negative indent the amount of the padding to maintain the grid system */
+  margin: 0 -35px; /* negative indent the amount of the padding to maintain the grid system */
   -webkit-border-radius: 0 0 6px 6px;
      -moz-border-radius: 0 0 6px 6px;
           border-radius: 0 0 6px 6px;
