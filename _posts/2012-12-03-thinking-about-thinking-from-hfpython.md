@@ -59,7 +59,7 @@ We used __pictures__, because your brain is tuned for visuals, not text. As far 
 
 (当然是pictures了，我们的记忆不都是些画面么?)
 
-We used redundancy, saying the same thing in different ways and with different media types, and multiple senses, to increase the chance that the content gets coded into more than one area of your brain. 
+We used redundancy, saying the same thing in __different ways__ and with different media types, and multiple senses, to increase the chance that the content gets coded into more than one area of your brain. 
 
 (多种表达方式会让你的brain感到新鲜)
 
