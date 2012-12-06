@@ -1,29 +1,5 @@
 <div class="page-header">
     <h1>{{ page.title }} {%if page.tagline %} <small>ManShow且敞亮</small>{% endif %}</h1>
-    <div style="width:100%;margin-top:20px;">
-	 <p class="socialmedia">
-    <a href="http://weibo.com/bonnshore?wvr=3.6&lf=reg" title="我的微博" rel="me">
-	<img src="/assets/themes/twitter/img/socialmedia/weibo.png" title="我的微博" height="16" width="16"/>
-	@伯恩先生
-    </a>
-    <a href="http://www.renren.com/232319024/profile" title="我的人人" rel="me">
-	<img src="/assets/themes/twitter/img/socialmedia/renren.ico" title="我的人人" height="16" width="16"/>
-	Mr.肖先生
-    </a>
-    <a href="http://www.facebook.com/bonnshore" title="Facebook" rel="me">
-	<img src="/assets/themes/twitter/img/socialmedia/fb.png" title="Facebook" height="16" width="16">
-	BonnShore
-    </a>
-    <a href="http://blog.csdn.net/bonnshore" title="我的CSDN" rel="me">
-	<img src="/assets/themes/twitter/img/socialmedia/csdn.png" title="我的CSDN" height="16" width="16"/>
-	bonnshore
-    </a>
-    <a href="http://github.com/bonnshore" title="GitHub" rel="me">
-	<img src="/assets/themes/twitter/img/socialmedia/github.ico" title="Github" height="16" width="16">
-	bonnshore
-    </a>
-    </p>
-    </div>
 </div>
 
 <div class="row">
@@ -46,18 +22,12 @@
             <ul class="tag_box inline">
 	    <h1>Categories~</h1>
             </ul>
-	    <ul class="tag_box inline">
+	    <ul>
               {% assign categories_list = site.categories %}
               {% include JB/categories_list %}
             </ul>
 
-            {% for category in site.categories %} 
-            <h2 id="{{ category[0] }}-ref">{{ category[0] | join: "/" }}</h2>
-            <ul>
-              {% assign pages_list = category[1] %}  
-              {% include JB/pages_list %}
-            </ul>
-            {% endfor %}
+            
           </div>
 	    
           <div id="tagDiv">
