@@ -46,7 +46,7 @@ Usage:
   {% endfor %}
   {% if posts_all.size > count %}
     <hr />
-    <a class="btn btn-inverse" href="archive.html" style="float:right; padding-left:30px; padding-right:30px;">看看还有啥好东西>>></a>
+    <a class="btn btn-inverse" href="archive.html" style="float:right; padding-left:30px; padding-right:30px;">More Fun</a>
   {% endif %}
 {% endif %}
 {% assign posts_all = nil %}

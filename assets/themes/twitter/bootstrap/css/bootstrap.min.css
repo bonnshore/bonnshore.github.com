@@ -17,7 +17,7 @@ input[type="search"]::-webkit-search-decoration,input[type="search"]::-webkit-se
 textarea{overflow:auto;vertical-align:top;}
 .clearfix{*zoom:1;}.clearfix:before,.clearfix:after{display:table;content:"";}
 .clearfix:after{clear:both;}
-body{margin:0;font-family:"微软雅黑",Helvetica,Arial,sans-serif;font-size:13px;line-height:22px;color:#121212;background-color:#ffffff;}
+body{margin:0;font-family:"微软雅黑",Helvetica,Arial,sans-serif;font-size:13px;font-weight:1200;line-height:22px;color:#121212;background-color:#ffffff;}
 footer{margin:0;font-family:"微软雅黑",Helvetica,Arial,sans-serif;font-size:13px;line-height:18px;color:#000000;background:transparent;background:rgba(255,255,255,.6);}
 a{color:#273747;text-decoration:none;}
 a:hover{color:#000000;text-decoration:underline;}
