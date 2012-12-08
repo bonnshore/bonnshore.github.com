@@ -13,6 +13,4 @@ tagline: ManShow or Geek
 
 Wait to be realized:
 
-1.同时在线人数
-2.累计访问、当日访问
-3.音乐播放器
+Photo Album
