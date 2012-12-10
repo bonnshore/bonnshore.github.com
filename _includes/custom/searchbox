@@ -1,11 +1,10 @@
-<form method="get" action="http://www.google.com/search" target="google_window" style="margin-bottom: 0px;">
-	<div>	
-		<input type="text" placeholder="搜搜更健康" value="" name="q" />
-		<input type="submit" name=”btnG” id="searchsubmit" value=" Search " />
-	</div>
+ <form id="searchform" action="http://www.google.com/search" method="get" target="google_window">
+                  <input id="keywords" type="text" onwebkitspeechchange="this.parentNode.submit()" x-webkit-grammar="builtin:search" x-webkit-speech="" name="q" value=""
+                         placeholder="找找有啥好东东…">
+	<input id="searchsubmit" type="submit" value="搜索">
 	<input type="hidden" name="ie" value="UTF-8" />
 	<input type="hidden" name="oe" value="UTF-8" />
 	<input type="hidden" name="hl" value="zh-CN" />
 	<input type="hidden" name="domains" value="http://www.bonnshore.com" />
 	<input type="hidden" name="sitesearch" value="http://www.bonnshore.com" />
-</form>
+              </form>

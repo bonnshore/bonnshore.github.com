@@ -1,12 +1,21 @@
-<div class="page-header">
-  <h1>{{ page.title }} <small>ManShow且敞亮</small></h1>
-</div>
+<!--<div class="page-header">
+  <h1>{{ page.title }} <small>Supporting tagline</small></h1>
+</div>-->
 
-<div class="row">
-  <div class="span8" style="width:70%; margin-left:35px;">
-    {{ content }}
-    <hr>
-    <div class="pagination">
+<article class="post">
+    <h2 class="post-title">
+        <a>{{ page.title }}</a>
+    </h2>
+    <p class="post-date">
+        <span class="year"> {{ page.date|date:"%Y" }}</span>
+        <span class="month"> {{ page.date|date:"%m" }} </span>
+        <span class="day">{{ page.date|date:"%d" }}</span>
+        <span class="time">{{ page.date|date:"%I:%m %p" }}</span>
+    </p>
+    <section class="article-content">
+        {{ content }}
+    </section>
+<div class="pagination">
       <ul>
       {% if page.previous %}
         <li class="prev"><a href="{{ BASE_PATH }}{{ page.previous.url }}" title="{{ page.previous.title }}">&larr; 向前一篇</a></li>
@@ -21,25 +30,7 @@
       {% endif %}
       </ul>
     </div>
-    <hr>
+    
+<hr>
     {% include JB/comments %}
-  </div>
-  
-  <div class="span4" style="width:20%;">
-    <h4>Published</h4>
-    <div class="date"><span>{{ page.date | date_to_long_string }}</span></div>
-
-  {% unless page.tags == empty %}
-    <div id="tagDiv">
-	<h4>Tags</h4>
-	<ul class="tag_box">
-	{% assign tags_list = page.tags %}
-	{% include JB/tags_list %}
-	</ul>
-    </div>
-  {% endunless %}  
-  <div>
-      {% include custom/douban_fm %}
-  </div>
-  </div>
-</div>
+</article>

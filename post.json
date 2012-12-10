@@ -1,0 +1,9 @@
+---
+layout:
+title:
+head_title:
+description:
+---
+
+{% assign posts_all = site.posts %}
+{% include custom/posts_db %}
