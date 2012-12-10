@@ -1,6 +1,6 @@
 ---
 layout: default
-title: My Blog
+title: BonnShore's Doodle
 head_title: bonnshore
 description: |
 ---
