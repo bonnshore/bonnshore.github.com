@@ -1,5 +1,7 @@
 ---
 layout: post
+date: "2012-11-20 22:22:PM"
+weather: High wind
 title: "简单的字符驱动demo实验"
 description: "这是一个简单的字符驱动demo实验"
 category: kernel&driver 

@@ -1,5 +1,7 @@
 ---
 layout: post
+date: "2012-11-20 22:22:PM"
+weather: No record
 title: "linux内核结构体中的.owner = THIS_MODULE是什么"
 description: "如题 ：在阅读Linux内核源码时候经常会遇到一种神秘的结构体初始化情况,像这种.owner = THIS_MODULE,这到底是怎么回事呢？其实这是Linux内核代码中一种特殊的结构体初始化方式---指定初始化..."
 category: kernel&driver

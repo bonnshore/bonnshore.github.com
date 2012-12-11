@@ -1,5 +1,7 @@
 ---
 layout: post
+date: "2012-12-03 16:19:PM"
+weather: Cloudy little
 title: "Thinking about thinking来自H.F.P.的Metacognition"
 description: "今天在下午在公司闲来无事，就开始翻看PC存的 Head.First.Python 电子版，到目前为止还没有看到正式讲Python的地方，在正文开始之前此书有很大一部分章节都在讲这本书和你平时看的其他书有什么不同，采用了哪些先进的讲述方式，这书我没看多少也不敢贸然推荐，但是在他这一大段废话中我还是看到了一些令我很满意的东西。。。"
 category: tittle-tattle 

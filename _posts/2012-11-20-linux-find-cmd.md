@@ -1,5 +1,7 @@
 ---
 layout: post
+date: "2012-11-20 22:22:PM"
+weather: No record
 title: "细数Linux中的那些可爱的查找命令"
 description: "在最近的工作中，需要用到Linux环境来进行一些编译和调试。其中难免要用用到一些Linux常用的基本命令，本人是和很多人一样，多年来深受windows的毒害，对GUI的依赖相对较高，所以闲暇之余就来总结一下Linux中那些常用的查找命令，权当做是学习笔记吧。"
 category: Linux_OS

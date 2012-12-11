@@ -1,5 +1,7 @@
 ---
 layout: post
+date: "2012-11-21 23:07:PM"
+weather: Blustery maybe
 title: "转战bonnshore.com，我有话说"
 description: "其实很早以前平哥就已经向我推荐了用jekyll来构建个人博客，那会儿就已经比较感兴趣了，但是却一直懒得没弄，其实那时还没有开始写博客。好像是在做圈内的项目时，突然萌生了写博客的想法，那时的想法还是很简单的，只是想单纯的记录下来项目中遇到的bug和解决方案..."
 category: tittle-tattle 

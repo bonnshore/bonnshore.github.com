@@ -1,5 +1,7 @@
 ---
 layout: post
+date: "2012-11-25 22:01:PM"
+weather: Sunny maybe
 title: "网上所流传的十款编程字体"
 description: "今晚和ZXJ看完了中央六的电影，泡脚的时候准备写两篇博客，这是第一篇，从题目上就已经可以看得很明白了，就是网上所流传的被广大programmer评选出来的十大最佳编程字体。"
 category: tittle-tattle 

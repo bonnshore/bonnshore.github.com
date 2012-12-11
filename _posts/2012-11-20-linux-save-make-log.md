@@ -1,5 +1,7 @@
 ---
 layout: post
+date: "2012-11-20 22:22:PM"
+weather: No record
 title: "Linux终端下另存make的log信息"
 description: "我们编译较大的工程项目时，总会遇到以下情况：输入make命令后，显示了很长的一段信息，但是只能显示下面的一部分，用Shift+PageUp也不行，看不到完整的make信息."
 category: Linux_OS

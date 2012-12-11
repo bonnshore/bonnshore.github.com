@@ -39,7 +39,8 @@ var cz_load = {
                         '<span class="year">'+ e.year+'</span>'+
                         '<span class="month">'+ e.month+'</span>'+
                         '<span class="day">'+ e.day+'</span>'+
-                        '<span class="time">'+ e.time+'</span>'+
+			'<span class="time">'+ e.time+'</span>'+
+			'<span class="postcomment">'+ e.weather +'</span>'+
                         '<section class="article-content"> '
                         + e.description + '</section></article>'
                 }
@@ -48,18 +49,22 @@ var cz_load = {
                 {
                     return false;
                 }
-
             });
-            if ($window.scrollTop() + $window.height() - top - $content.outerHeight() > 10)
+            if ($window.scrollTop() + $window.height() - top - $content.outerHeight() > ($window.height()*0.1))
             {
-
-                setTimeout(function() {
+		setTimeout(function() {
                     $(".post-nav").detach();
                     $("#cz_display").append(ext).slideDown(1000);
-                    $("#cz_display").append($extend);
-                    $("#cz_display").find('.post-nav>.previous>a').parent().after($no_more);
+                    if(cz_offset.val() < cz_load.articles.length)
+                    {
+                        $("#cz_display").append($extend);
+                        $("#cz_display").find('.post-nav>.previous>a').parent().after($no_more);
+
+                    }
+
                 },1000);
                 cz_offset.val(origin+offset);
+                
 
 
             }

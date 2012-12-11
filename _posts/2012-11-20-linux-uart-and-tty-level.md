@@ -1,5 +1,7 @@
 ---
 layout: post
+date: "2012-11-20 22:22:PM"
+weather: No record
 title: "Linux中tty框架与uart框架之间的调用关系剖析"
 description: "之前本人在从串口驱动的移植看linux2.6内核中的驱动模型一文中已经写到了移植的设备是如何通过platform总线来与对应的驱动挂载。在这期间有一个问题困扰着我，那就是来自用户空间的针对uart设备的操作意图是如何通过tty框架逐层调用到uart层的core驱动，进而又是如何调用到真实对应于设备的设备驱动的，本文中的对应设备驱动就是8250驱动，最近我想将这方面的内容搞清楚。"
 category: kernel&driver

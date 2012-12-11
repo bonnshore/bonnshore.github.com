@@ -1,5 +1,7 @@
 ---
 layout: post
+date: "2012-11-20 22:22:PM"
+weather: Sunny maybe
 title: "一篇关于程序员和数学的文章"
 description: "自从我读了Johnny von Neumann的传记,我已经为弥补我糟糕的数学技能花了15个月了.读了大量的数学书籍,不过呢,似乎我还有更多没有读.当然我会接着做的.现在我就来告诉你这些.告别传统观念... "
 category: lessons 

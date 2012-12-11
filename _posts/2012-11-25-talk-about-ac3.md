@@ -1,5 +1,7 @@
 ---
 layout: post
+date: "2012-11-25 21:33:PM"
+weather: Rainy maybe
 title: "来说说我已经等了一年且已经上市了快一个月的AC3"
 description: "看完了中央六的电影，然后没有换台啊，现在电视上放的是第49届在台湾的金马奖颁奖典礼的转播，水都凉了还在泡脚，ZXJ嫌冷独自上楼了，这是第二篇，应该没有第一篇有营养，吐吐槽。"
 category: tittle-tattle

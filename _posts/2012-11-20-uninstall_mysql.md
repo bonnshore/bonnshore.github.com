@@ -1,5 +1,7 @@
 ---
 layout: post
+date: "2012-11-20 22:22:PM"
+weather: Fine maybe
 title: "如何完全卸载Mysql"
 description: "由于安装MySQL的时候，疏忽没有选择底层编码方式，采用默认的ASCII的编码格式，于是接二连三的中文转换问题随之而来，就想卸载了重新安装MySQL，这一卸载倒是出了问题，导致安装的时候安装不上，在网上找了一个多小时总结一下解决方案。"
 category: lessons 

@@ -1,5 +1,7 @@
 ---
 layout: post
+date: "2012-11-20 22:22:PM"
+weather: No record
 title: "linux内核编译错误:include/asm is a directory but a symlink was expected"
 description: "拿到一个内核包，在编译时出现错误提示:include/asm is a directory but a symlink was expected,解决方法进来看。"
 category: kernel&driver

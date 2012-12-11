@@ -1,5 +1,7 @@
 ---
 layout: post
+weather: No record
+date: "2012-11-20 22:22:PM"
 title: "用C语言的rand()和srand()产生伪随机数的方法总结"
 description: "如题，我感觉本文的题目就已经将本文的内容暴露无疑了，还在等什么，还不赶紧进来看？"
 category: learning 

@@ -1,5 +1,7 @@
 ---
 layout: post
+date: "2012-11-20 22:22:PM"
+weather: No record
 title: "从串口驱动的移植看linux2.6内核中的驱动模型"
 description: "本文是博主学习linux驱动移植整整两周后通过查阅资料并结合自己的一些观察所做的一些记录，旨在作为日后温习材料，由于博主尚无太多经验文中内可能会出现一些谬误，希望看到的热心朋友能拍砖指正。"
 category: kernel&driver 

@@ -47,7 +47,7 @@ task :post do
   title = ENV["title"] || "new-post"
   slug = title.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
   begin
-    date = (ENV['date'] ? Time.parse(ENV['date']) : Time.now).strftime('%Y-%m-%d')
+    date = (Time.now).strftime('%Y-%m-%d')
   rescue Exception => e
     puts "Error - date format must be YYYY-MM-DD, please check you typed it correctly!"
     exit -1
@@ -61,8 +61,10 @@ task :post do
   open(filename, 'w') do |post|
     post.puts "---"
     post.puts "layout: post"
+    post.puts "date: \"#{(Time.now).strftime('%Y-%m-%d %H:%M:%p')}\""
     post.puts "title: \"#{title.gsub(/-/,' ')}\""
     post.puts 'description: ""'
+    post.puts "weather: Fine day"
     post.puts "category: "
     post.puts "tags: []"
     post.puts "---"

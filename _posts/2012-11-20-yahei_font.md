@@ -1,5 +1,7 @@
 ---
 layout: post
+date: "2012-11-20 22:22:PM"
+weather: Thunder maybe
 title: "微软雅黑在word中行距过宽问题"
 description: "微软雅黑是MS在推出vista时一起推出的一种字体，字体很漂亮也很受大众喜欢。但是用这种字体在简体中文word中编辑文档，发现“行距”很宽，一页也排不了几行，不美观，当然是问题都是可以解决的，本文就是这样一篇文章。"
 category: lessons 

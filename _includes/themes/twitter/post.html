@@ -10,7 +10,8 @@
         <span class="year"> {{ page.date|date:"%Y" }}</span>
         <span class="month"> {{ page.date|date:"%m" }} </span>
         <span class="day">{{ page.date|date:"%d" }}</span>
-        <span class="time">{{ page.date|date:"%I:%m %p" }}</span>
+        <span class="time">{{ page.date|date:"%H:%M %p" }}</span>
+        <span class="postcomment">{{ page.weather }}</span>
     </p>
     <section class="article-content">
         {{ content }}

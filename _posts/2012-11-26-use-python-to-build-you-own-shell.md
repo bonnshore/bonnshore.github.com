@@ -1,5 +1,7 @@
 ---
 layout: post
+date: "2012-11-26 20:22:PM"
+weather: Sunny maybe
 title: "Python实现简易shell,我的coding_kit"
 description: "前一段时间突然想找一些脚本语言来了解，当时是确定了Python和Ruby两种脚本语言，对两者是大概的了解了一些，大家说法不一，各有各的好，于是就决定挨个儿来试试，于是就有了题目上这个蛋痛的东西。"
 category: learning 

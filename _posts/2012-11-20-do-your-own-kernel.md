@@ -1,5 +1,7 @@
 ---
 layout: post
+date: "2012-11-20 22:22:PM"
+weather: No record
 title: "把自己的驱动编译进内核或模块"
 description: "2.6内核的源码树目录下一般都会有两个文文：Kconfig和Makefile。分布在各目录下的Kconfig构成了一个分布式的内核配置数据库，每个Kconfig分别描述了所属目录源文件相关的内核配置菜单。"
 category: kernel&driver
