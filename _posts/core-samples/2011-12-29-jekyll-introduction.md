@@ -3,7 +3,7 @@ layout: post
 date: "2011-12-29 22:22:PM"
 weather: Tornado maybe
 category : web
-description: "Jekyll是一个帮助你快速搭建静态个人博客的轻量级解决方案，能够帮助你在不适用任何后台的情况下拥有自己的个人网站，她不像wordpress那样需要数据库，其实你所需要做的只是简单的写博客而已。当然如果你有兴致自己定制的话，还是要仔细研究与了解的。还有，我就不翻译了。"
+description: "Jekyll是一个帮助你快速搭建静态个人博客的轻量级解决方案，能够帮助你在不使用任何后台的情况下拥有自己的个人网站，她不像wordpress那样需要数据库，其实你所需要做的只是简单的写博客而已。当然如果你有兴致自己定制的话，还是要仔细研究与了解的。还有，我就不翻译了。"
 tags : [useful东东, jekyll, funny]
 ---
 {% include JB/setup %}
@@ -11,7 +11,7 @@ tags : [useful东东, jekyll, funny]
 ###好吧，让我们开始吧~
 
 
-    Jekyll是一个帮助你快速搭建静态个人博客的轻量级解决方案，能够帮助你在不适用任何后台的情况下拥有自己的个人网站，她不像wordpress那样需要数据库，其实你所需要做的只是简单的写博客而已。当然如果你有兴致自己定制的话，还是要仔细研究与了解的。还有，我就不翻译了。
+    Jekyll是一个帮助你快速搭建静态个人博客的轻量级解决方案，能够帮助你在不使用任何后台的情况下拥有自己的个人网站，她不像wordpress那样需要数据库，其实你所需要做的只是简单的写博客而已。当然如果你有兴致自己定制的话，还是要仔细研究与了解的。还有，我就不翻译了。
 
 This Jekyll introduction will outline specifically  what Jekyll is and why you would want to use it.
 Directly following the intro we'll learn exactly _how_ Jekyll does what it does.
