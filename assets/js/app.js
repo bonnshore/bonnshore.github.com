@@ -17,8 +17,8 @@ var cz_load = {
             var cz_offset = $("#cz_offset");
             var origin = (cz_offset.val() == ''?0:cz_offset.val());
             origin=parseInt(origin);
-            var $extend = $( '<p class="post-nav"><span class="previous"><a href="assets/archive.html">' +
-                ' « 看看还有什么好玩意'+
+            var $extend = $( '<p class="post-nav"><span class="previous"><a href="/categories.html">' +
+                ' « 分类看更方便'+
                 '</a>'+
                 ' </span>'+
                 '</p>');

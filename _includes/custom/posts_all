@@ -44,8 +44,8 @@ Usage:
   {% endfor %}
    <p class="post-nav">
                      <span class="previous">
-                         <a href="{{ BASE_PATH }}/archive.html">
-                             « 看看还有什么好玩意
+                         <a href="/categories.html">
+                             « 分类看更方便
                          </a>
                      </span>
    </p>
