@@ -50,7 +50,7 @@ var cz_load = {
                     return false;
                 }
             });
-            if ($window.scrollTop() + $window.height() - top - $content.outerHeight() > ($window.height()*0.1))
+            if ($window.scrollTop() + $window.height() - top - $content.outerHeight() > ($window.height()*0.12))
             {
 		setTimeout(function() {
                     $(".post-nav").detach();

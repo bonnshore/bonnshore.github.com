@@ -289,6 +289,6 @@ tags: [Python, 是熊么, funny]
 
 最后下面附一张我的效果图吧：
 
-![python](/assets/themes/twitter/img/python.png)
+![python](/assets/themes/twitter/img/blogpic/python.png)
 
 再废话两句，这是我学python后做的第一个demo，让我感觉这个语言确实非常的简单，简单的语言往往并不好掌握，因为她们太灵活了，在不同人的手里她们可以千姿百态，想要用她写出好的代码绝对不是说来就来的事情。。。不知道Ruby是个啥情况啊，还是那句不负责任的到时候再说。。。

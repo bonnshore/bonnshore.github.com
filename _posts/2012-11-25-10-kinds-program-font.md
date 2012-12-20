@@ -15,43 +15,43 @@ tags: [是熊么]
 
 10\. Courier
 
-![courier](/assets/themes/twitter/img/courier-new.png)
+![courier](/assets/themes/twitter/img/blogpic/courier-new.png)
 
 9\. Andale Mono
 
-![andale-mono](/assets/themes/twitter/img/andale-mono.png)
+![andale-mono](/assets/themes/twitter/img/blogpic/andale-mono.png)
 
 8\. Monaco
 
-![monaco](/assets/themes/twitter/img/monaco.png)
+![monaco](/assets/themes/twitter/img/blogpic/monaco.png)
 
 7\. Profont
 
-![profont](/assets/themes/twitter/img/profont.png)
+![profont](/assets/themes/twitter/img/blogpic/profont.png)
 
 6\. Monofur
 
-![Monofur](/assets/themes/twitter/img/monofur.png)
+![Monofur](/assets/themes/twitter/img/blogpic/monofur.png)
 
 5\. Proggy
 
-![Proggy](/assets/themes/twitter/img/proggy-clean.png)
+![Proggy](/assets/themes/twitter/img/blogpic/proggy-clean.png)
 
 4\. Droid Sans Mono
 
-![Droid Sans Mono](/assets/themes/twitter/img/droid-sans-mono.png)
+![Droid Sans Mono](/assets/themes/twitter/img/blogpic/droid-sans-mono.png)
 
 3\. Deja Vu Sans Mono
 
-![Deja Vu Sans Mono](/assets/themes/twitter/img/droid-sans-mono.png)
+![Deja Vu Sans Mono](/assets/themes/twitter/img/blogpic/droid-sans-mono.png)
 
 2\. Consolas
 
-![Consolas](/assets/themes/twitter/img/consolas.png) 
+![Consolas](/assets/themes/twitter/img/blogpic/consolas.png) 
 
 1\. Inconsolata
 
-![Inconsolata](/assets/themes/twitter/img/inconsolata.png)
+![Inconsolata](/assets/themes/twitter/img/blogpic/inconsolata.png)
 
 好吧，他们虽然把Inconsolata排在了第一，但对我而言最吸引我的还是被排在第8位的Monaco，说起这个字体呢没记错的话应该是苹果设计的（个人感觉很有可能是乔帮主自己画出来的哦），是MacOS里面安装自带的字体，不过中文的话确实是挺一般的，等到中文编程语言横行的时候，我一定会用雅黑字体的。
 
