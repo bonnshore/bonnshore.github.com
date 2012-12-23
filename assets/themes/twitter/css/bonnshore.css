@@ -15,7 +15,6 @@ header, hgroup, iframe, label, mark, menu, nav, section, summary, time, video {
 header, footer, nav, section, article {display:block;}
 
 body {
-	background: #9cf url(../img/body.jpg) fixed;
 	font: .93em/1.5 Verdana, Arial, "微软雅黑";
 	color: #555;
 	overflow-x: hidden;
