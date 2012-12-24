@@ -4,7 +4,7 @@ var autobkg = {
                 weekday=weekday.getDay()
 		switch(weekday){
 		    case 0:
-			$(wrapper).css('background','url(/assets/themes/twitter/img/body4.jpg) fixed')
+			$(wrapper).css('background','url(/assets/themes/twitter/img/body7.jpg) fixed')
 			break;
 		    case 1:
 			$(wrapper).css('background','url(/assets/themes/twitter/img/body1.jpg) fixed')
