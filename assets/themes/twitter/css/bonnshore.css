@@ -712,6 +712,7 @@ article.post:hover .post-data {
 /* sidebar */
 #sidebar {
 	position: absolute;
+	float: right;
 	top: -10px;
 	right: 0;
 	width: 266px;
