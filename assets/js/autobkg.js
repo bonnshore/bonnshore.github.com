@@ -4,7 +4,7 @@ var autobkg = {
                 weekday=weekday.getDay()
 		switch(weekday){
 		    case 0:
-			document.body.style.background='url(/assets/themes/twitter/img/body0.jpg) fixed';
+			document.body.style.background='url(/assets/themes/twitter/img/body7.jpg) fixed';
 			break;
 		    case 1:
 			document.body.style.background='url(/assets/themes/twitter/img/body1.jpg) fixed';
