@@ -9,6 +9,7 @@ CONFIG = {
   'themes' => File.join(SOURCE, "_includes", "themes"),
   'layouts' => File.join(SOURCE, "_layouts"),
   'posts' => File.join(SOURCE, "_posts"),
+  'photos' => File.join(SOURCE, "_photos"),
   'post_ext' => "md",
   'theme_package_version' => "0.1.0"
 }
@@ -22,7 +23,8 @@ module JB
       :themes => "_includes/themes",
       :theme_assets => "assets/themes",
       :theme_packages => "_theme_packages",
-      :posts => "_posts"
+      :posts => "_posts",
+      :photos => "_photos"
     }
     
     def self.base
@@ -71,6 +73,37 @@ task :post do
     post.puts "{% include JB/setup %}"
   end
 end # task :post
+
+# Usage: rake photo title="A Title" [date="2012-02-09"]
+desc "Begin a new photo in #{CONFIG['photos']}"
+task :photo do
+  abort("rake aborted: '#{CONFIG['photos']}' directory not found.") unless FileTest.directory?(CONFIG['photos'])
+  title = ENV["title"] || "new-photo"
+  slug = title.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
+  begin
+    date = (Time.now).strftime('%Y-%m-%d')
+  rescue Exception => e
+    puts "Error - date format must be YYYY-MM-DD, please check you typed it correctly!"
+    exit -1
+  end
+  filename = File.join(CONFIG['photos'], "#{date}-#{slug}.#{CONFIG['post_ext']}")
+  if File.exist?(filename)
+    abort("rake aborted!") if ask("#{filename} already exists. Do you want to overwrite?", ['y', 'n']) == 'n'
+  end
+  
+  puts "Creating new photo: #{filename}"
+  open(filename, 'w') do |post|
+    post.puts "---"
+    post.puts "layout: photo"
+    post.puts "date: \"#{(Time.now).strftime('%Y-%m-%d %H:%M:%p')}\""
+    post.puts "title: \"#{title.gsub(/-/,' ')}\""
+    post.puts 'description: ""'
+    post.puts 'location: ""'
+    post.puts "weather: Fine day"
+    post.puts "---"
+    post.puts "{% include JB/setup %}"
+  end
+end # task :photo
 
 # Usage: rake page name="about.html"
 # You can also specify a sub-directory path.
