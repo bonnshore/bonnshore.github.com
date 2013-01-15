@@ -13,4 +13,4 @@ tagline: ManShow or Geek
 
 Wait to be realized:
 
-Photo Album
+Show analytic data on page.
