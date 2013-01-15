@@ -1,6 +1,6 @@
 <ul class="thumbnails">
 {% assign photo_lists = site.pages %}
-{% for node in photo_lists reversed %}
+{% for node in photo_lists %}
 {% if node.group == "photo" %}
   <li class="photo" style="width:160px">
     <div class="thumbnail">
