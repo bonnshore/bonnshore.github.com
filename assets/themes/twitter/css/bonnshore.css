@@ -110,7 +110,7 @@ textarea:focus, input[type=password]:focus, input[type=text]:focus, textarea:hov
 
 /* block */
 
-.block, article.post, #sidebar .widget, .post>article, #relative-articles, #comments_section, .commentlist>li, #respond, #footer, .post-nav a, #more-hint, .comment-float-list {
+.block, .photo, article.post, #sidebar .widget, .post>article, #relative-articles, #comments_section, .commentlist>li, #respond, #footer, .post-nav a, #more-hint, .comment-float-list {
     background: rgba(255, 255, 255, .9);
 	position: relative;
 	margin: 10px 10px 20px;

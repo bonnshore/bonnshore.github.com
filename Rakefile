@@ -9,7 +9,7 @@ CONFIG = {
   'themes' => File.join(SOURCE, "_includes", "themes"),
   'layouts' => File.join(SOURCE, "_layouts"),
   'posts' => File.join(SOURCE, "_posts"),
-  'photos' => File.join(SOURCE, "_photos"),
+  'photos' => File.join(SOURCE, "photos"),
   'post_ext' => "md",
   'theme_package_version' => "0.1.0"
 }
@@ -94,12 +94,14 @@ task :photo do
   puts "Creating new photo: #{filename}"
   open(filename, 'w') do |post|
     post.puts "---"
-    post.puts "layout: photo"
+    post.puts "layout: page"
     post.puts "date: \"#{(Time.now).strftime('%Y-%m-%d %H:%M:%p')}\""
     post.puts "title: \"#{title.gsub(/-/,' ')}\""
     post.puts 'description: ""'
     post.puts 'location: ""'
+    post.puts 'imgUrl: "/assets/themes/twitter/img/photos/.jpg"'
     post.puts "weather: Fine day"
+    post.puts "group: photo"
     post.puts "---"
     post.puts "{% include JB/setup %}"
   end

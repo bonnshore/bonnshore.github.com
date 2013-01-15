@@ -1,0 +1,54 @@
+<!--the album page-->
+<div class="container">
+  {% include custom/photo_all %}
+      <div id="modalBox" class="modal" style="display: none">
+      <div class="modal-header">
+	<button class="close" data-dismiss="modal">esc</button>
+	<h4 class="modal-title">Modal header</h4>
+      </div>
+      <div class="modal-body">
+	<img id="modalImage" src="" title="" />
+      </div>
+      <div class="modal-footer">
+	{% include JB/comments %}
+      </div>
+    </div>
+</div>
+<script src="/assets/js/jquery-1.7.2.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="assets/js/jquery.masonry.min.js"></script> 
+<script type="text/javascript" src="assets/js/bootstrap-modal.js"></script> 
+<script type="text/javascript" src="assets/js/bootstrap-tooltip.js"></script> 
+<script>
+$(function(){
+if (screen.width <= 320) {
+      return;
+    }
+
+var $container = $('.thumbnails');
+    $container.imagesLoaded( function(){
+      $container.masonry({
+        itemSelector : '.photo'
+      });
+    });
+
+var popModal = function(title, image, txt) {
+      $('#modalBox .modal-title').text(title);
+      $('#modalImage').attr({'src': image, 'title': txt });
+      $('#modalBox').modal();
+    };
+
+$('.photo a').click(function (e) {
+      e.preventDefault();
+      $(this).tooltip('hide');
+
+      popModal($(this).attr('alt') || 'untitled',
+      $('img', this).attr('data-image'), $('img', this).attr('id'))
+    });
+
+/* $(function(){
+    $('.thumbnails').masonry({
+	itemSelector: '.photo'
+    });
+});*/
+});
+</script>
