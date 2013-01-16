@@ -5,7 +5,7 @@
   <li class="photo" style="width:160px">
     <div class="thumbnail">
       <a href="{{ node.imgUrl }}" alt="{{ node.title }}">
-      <img title="{{ node.title }}" src="{{ node.imgUrl }}" alt="{{ node.title }}" style="width:150px; height:150px" id="{{ node.description }}" data-image="{{ node.imgUrl }}" img-comment="{{ node.imgComment }}">
+      <img title="{{ node.title }}" src="{{ node.imgUrl }}" alt="{{ node.title }}" style="width:150px; height:150px" id="{{ node.description }}" data-image="{{ node.imgUrl }}" >
       </a>
       <p>{{ node.title }}</p>
       <p>{{ node.description }}</p>
