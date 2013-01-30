@@ -10,16 +10,3 @@ description: |
 {% include custom/posts_all %}
 <input type="hidden" id="cz_offset" value="10" />
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
