@@ -52,30 +52,29 @@ tags: [Python, jekyll, 胡说]
 <br>
 下面的这些则在receiveMail.py文件中。
 <br>
-    def extract_body(self, payload):
-    	if isinstance(payload, str):
-		return payload
-	else:
-		return '\n'.join([self.extract_body(part.get_payload()) for part in payload])
-  
-    def get_mail_simpleInfo_from_id(self, id): 
-        #status, response = self.M.fetch(id, '(body[header.fields (subject)])') 
-        status, response = self.M.fetch(id,"(RFC822)") 
-	for parts in response:
-		if isinstance(parts, tuple):
-			mail_message = email.message_from_string(parts[1])
-			subject = mail_message['subject']
-			mail_from = email.utils.parseaddr(msg.get("from"))[1]
-			mail_to = email.utils.parseaddr(msg.get("to"))[1]
-			print '['+mail_message['Date']+']'+'\n'+'From:'+mail_from+ ' To:'+mail_to+'\n'+'Subject:'+mail_message['subject']+'\n'
+    def get_first_text_block(self,email_message_instance):
+        maintype = email_message_instance.get_content_maintype()
+        if maintype == 'multipart':
+            for part in email_message_instance.get_payload():
+                if part.get_content_maintype() == 'text':
+                    return part.get_payload(decode=True).strip()
+        elif maintype == 'text':
+            return email_message_instance.get_payload(decode=True).strip()
 
-			payload = mail_message.get_payload()
-			body = self.extract_body(payload)
-	return body
-  
+    def get_mail_simpleInfo_from_id(self, id): 
+        status, response = self.M.fetch(id,"(RFC822)")
+        mailText = response[0][1]
+        mail_message = email.message_from_string(mailText)
+        subject = mail_message['subject']
+        dh = email.Header.decode_header(subject)  
+        subject = dh[0][0]
+        mail_from = email.utils.parseaddr(mail_message["from"])[1]
+        mail_to = email.utils.parseaddr(mail_message["to"])[1]
+	print '['+mail_message['Date']+']'+'\n'+'From:'+mail_from+ ' To:'+mail_to+'\n'+'Subject:'+subject+'\n'
+        return self.get_first_text_block(mail_message)
+
     def get_mail_content(self, content):
     	print 'MailContent:'+'\n'+content
-    
     
     def check_simpleInfo(self, mailCounts):
     	print "Input 'y' to check the lasted UNread mail. Other cmds to abandon!"
@@ -107,8 +106,9 @@ tags: [Python, jekyll, 胡说]
     	else:
     		pass	
 
-稍微解读一下，调用check_simpleInfo()函数查阅某邮件的简略信息，包括邮件来自谁，发送时间，主题等。
-调用check_detailInfo()函数来查看邮件的详细信息也就是邮件内容。当然都看得出来get_mail_simpleInfo_from_id()才是主要进行了获取内容的工作。extract_body()是一个递归的函数用来将获得到邮件信息实体分解成最小单元。
+稍微解读一下，调用`check_simpleInfo()`函数查阅某邮件的简略信息，包括邮件来自谁，发送时间，主题等。
+调用`check_detailInfo()`函数来查看邮件的详细信息也就是邮件内容。当然都看得出来`get_mail_simpleInfo_from_id()`才是主要进行了获取内容的工作。`get_first_text_block()`函数用来判断这个作为参数传进来的邮件实体的主体类型是哪个？如果还是multipart类型还需要继续分解一下最后的目标就是将他们全部分解为text类型。
+由于我们在工作中会使用到中文，所以在这里我们还需要关注两个有可能产生乱码的地方，一个是邮件头部分在代码中使用了`email.Header`对其进行解码。`email.Header.decode_header(subject)`对邮件主体可能出现的乱码进行了处理。`part.get_payload(decode=True)`函数对解析的邮件主要内容进行了解码，避免将一些乱七八糟的mojibake直接显示在你的终端里。说到这里不能不再啰嗦一件事，虽然很不起眼但是却很容易再这里出问题，那就是你terminal的编码格式，如果你的编码格式不支持中文或者utf-8的画python会报错的，没错你没有看错，terminal的编码错误会造成python的崩溃，我就遇到了此问题，虽说Mac的terminal是支持各种编码的但是正巧我做这一部分的时候是在使用公司的Thinkpad，于是在window的CMD下就果断悲剧了，直接报了python的编码不能找到定义字符集(UnicodeDecodeError),所以有人要尝试的话此处是需要注意的。
 上面的代码就是在接受邮件时用到的主要函数，当然还有其他的一些像修改、新增、删除收件箱，按照发送者筛选查询等功能就没有贴上来了。
 <br>
 ###下面看看创建一个邮件并发送给一个收件列表的主要实现吧
@@ -150,8 +150,18 @@ tags: [Python, jekyll, 胡说]
 		print str(e)  
 		return False  
 <br>
-代码中smtpServer.starttls()此句就是我上提到过的升级安全加密策略的语句，刚知道仅用一句代码就实现的时候还是被Python强大的库惊呆了。其中，不加msg['Date'] = email.Utils.formatdate()这句的话发送出的邮件默认时间为：UTC-07:00 休斯顿、底特律时间，加上之后恢复正常，此问题的原因我还没有详细追究。
+代码中`smtpServer.starttls()`此句就是我上提到过的升级安全加密策略的语句，刚知道仅用一句代码就实现的时候还是被Python强大的库惊呆了。其中，不加`msg['Date'] = email.Utils.formatdate()`这句的话发送出的邮件默认时间为：UTC-07:00 休斯顿、底特律时间，加上之后恢复正常，此问题的原因我还没有详细追究。
 <br>
 从上面的代码不难看出这是能够单纯的发送文本信息的情况，其实其他的像包含HTML和附件和图片的代码也不是很复杂，只是我觉着我现在暂时还用不到，也就没有着急实现。
 <br>
-代码的基本情况大致就是这样了，当然没有逐句的解释这些代码，我觉着逻辑简单命名还算完整，其中有些库函数大家感兴趣的可以Google之，丰富的类库和充足的资料的保证下总体感觉代码开发工作量很小，只能说以后要是再有什么需求就决定继续用Python了，就一个字，方便！快捷！你能相信一个菜鸟屌丝学生程序员在一段很短的时间内就从完全没概念到完成编码加debug么？你以为屌丝逆袭了，错，是Python太Powerful了！当然还有更加Powerful的Google在帮我，虽然它时不时上不去还得在.hk .sg .com/ncr之间来回换着用，但Google的存在至少对程序员来说就是个太美好的存在了！又跑题了。。。
+代码的基本情况大致就是这样了，当然没有逐句的解释这些代码，我觉着逻辑简单命名还算完整，其中有些库函数大家感兴趣的可以Google之，丰富的类库和充足的资料的保证下总体感觉代码开发工作量很小，只能说以后要是再有什么需求就决定继续用Python了，就一个字，方便！快捷！现在下面贴两张我运行的效果图。
+<br>
+选择获取最新的一封邮件：
+<br>
+![pymail01](/assets/themes/twitter/img/blogpic/pymail01.png)
+<br>
+选择发送一封新的邮件：
+<br>
+![pymail02](/assets/themes/twitter/img/blogpic/pymail02.png)
+<br>
+你能相信一个菜鸟屌丝学生程序员在一段很短的时间内就从完全没概念到完成编码加debug么？你以为屌丝逆袭了，错，是Python太Powerful了！当然还有更加Powerful的Google在帮我，虽然它时不时上不去还得在.hk .sg .com/ncr之间来回换着用，但Google的存在至少对程序员来说就是个太美好的存在了！又跑题了。。。
