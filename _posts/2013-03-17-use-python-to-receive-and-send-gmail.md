@@ -65,9 +65,7 @@ tags: [Python, jekyll, 胡说]
         status, response = self.M.fetch(id,"(RFC822)")
         mailText = response[0][1]
         mail_message = email.message_from_string(mailText)
-        subject = mail_message['subject']
-        dh = email.Header.decode_header(subject)  
-        subject = dh[0][0]
+	subject = u''.join(unicode(strs,t) for strs,t in email.Header.decode_header(mail_message['subject']))
         mail_from = email.utils.parseaddr(mail_message["from"])[1]
         mail_to = email.utils.parseaddr(mail_message["to"])[1]
 	print '['+mail_message['Date']+']'+'\n'+'From:'+mail_from+ ' To:'+mail_to+'\n'+'Subject:'+subject+'\n'
@@ -108,7 +106,7 @@ tags: [Python, jekyll, 胡说]
 
 稍微解读一下，调用`check_simpleInfo()`函数查阅某邮件的简略信息，包括邮件来自谁，发送时间，主题等。
 调用`check_detailInfo()`函数来查看邮件的详细信息也就是邮件内容。当然都看得出来`get_mail_simpleInfo_from_id()`才是主要进行了获取内容的工作。`get_first_text_block()`函数用来判断这个作为参数传进来的邮件实体的主体类型是哪个？如果还是multipart类型还需要继续分解一下最后的目标就是将他们全部分解为text类型。
-由于我们在工作中会使用到中文，所以在这里我们还需要关注两个有可能产生乱码的地方，一个是邮件头部分在代码中使用了`email.Header`对其进行解码。`email.Header.decode_header(subject)`对邮件主体可能出现的乱码进行了处理。`part.get_payload(decode=True)`函数对解析的邮件主要内容进行了解码，避免将一些乱七八糟的mojibake直接显示在你的终端里。说到这里不能不再啰嗦一件事，虽然很不起眼但是却很容易再这里出问题，那就是你terminal的编码格式，如果你的编码格式不支持中文或者utf-8的画python会报错的，没错你没有看错，terminal的编码错误会造成python的崩溃，我就遇到了此问题，虽说Mac的terminal是支持各种编码的但是正巧我做这一部分的时候是在使用公司的Thinkpad，于是在window的CMD下就果断悲剧了，直接报了python的编码不能找到定义字符集(UnicodeDecodeError),所以有人要尝试的话此处是需要注意的。
+由于我们在工作中会使用到中文，所以在这里我们还需要关注两个有可能产生乱码的地方，一个是邮件头部分在代码中使用了`email.Header`对其进行解码,`email.Header.decode_header(subject)`对邮件主体可能出现的乱码进行了处理。关于此处stackoverflow上有一热心的哥们坚定的表示像以往那样只是简单的对他们进行解码是不够的，因为此处的`mail_message['subject']`有可能回返回多个实体，而不仅仅是一个，所以为了保证数据的完整采用了列表解析循环获取数据，正是此句：`subject = u''.join(unicode(strs,t) for strs,t in email.Header.decode_header(mail_message['subject']))`,多么省事儿的语言啊。`part.get_payload(decode=True)`函数对解析的邮件主要内容进行了解码，避免将一些乱七八糟的mojibake直接显示在你的终端里。说到这里不能不再啰嗦一件事，虽然很不起眼但是却很容易再这里出问题，那就是你terminal的编码格式，如果你的编码格式不支持中文或者utf-8的画python会报错的，没错你没有看错，terminal的编码错误会造成python的崩溃，我就遇到了此问题，虽说Mac的terminal是支持各种编码的但是正巧我做这一部分的时候是在使用公司的Thinkpad，于是在window的CMD下就果断悲剧了，直接报了python的编码不能找到定义字符集(UnicodeDecodeError),所以有人要尝试的话此处是需要注意的。
 上面的代码就是在接受邮件时用到的主要函数，当然还有其他的一些像修改、新增、删除收件箱，按照发送者筛选查询等功能就没有贴上来了。
 <br>
 ###下面看看创建一个邮件并发送给一个收件列表的主要实现吧
