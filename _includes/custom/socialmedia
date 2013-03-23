@@ -3,10 +3,6 @@
                       <img src="{{  base_path }}/assets/themes/twitter/img/socialmedia/facebook.png" title="facebook" height="25" width="25"/>
                       bonnshore
 		  </a>
-                  <a href="http://www.renren.com/232319024/profile" title="我的人人" rel="me">
-                      <img src="{{  BASE_PATH }}/assets/themes/twitter/img/socialmedia/renren.png" title="我的人人" height="25" width="25"/>
-                      Mr.肖先生
-		  </a>
 		  <a href="http://weibo.com/bonnshore?wvr=3.6&lf=reg" title="我的微博" rel="me">
                       <img src="{{  BASE_PATH }}/assets/themes/twitter/img/socialmedia/weibo.png" title="我的微博" height="25" width="25"/>
                       @伯恩先生
