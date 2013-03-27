@@ -42,17 +42,49 @@ tags: [Python, jekyll, 胡说]
 		print 'A total of '+ mailCounts +' mails in your input mailbox.'
 		print 'A total of '+recvMail.get_unread_count()+ ' UNREAD mails in your input mailbox.'
 		recvMail.get_imap_quota()
-		mailBody = recvMail.check_simpleInfo(mailCounts)
+		mailBody = recvMail.check_simpleInfo(mailCounts) #返回值是邮件content
 		if mailBody != 0:
 			recvMail.check_detailInfo(mailBody)
 		return
 
 <br>
-上面的这些代码是出现在调用层的。
+上面的这些代码是出现在调用层的,主要是调用了具体实现功能的下面几个函数。
 <br>
 下面的这些则在receiveMail.py文件中。
 <br>
-    def get_first_text_block(self,email_message_instance):
+    def check_simpleInfo(self, mailCounts):
+    	print "Input 'y' to check the lasted UNread mail. Other cmds to abandon!"
+    	while True:
+			argv = string.split(raw_input('$====>'))
+			if len(argv)!=0:
+				if argv[0] == 'y':
+					mailBody = self.get_mail_simpleInfo_from_id(mailCounts)
+					return mailBody
+				else:
+					return 0
+			else:
+				pass
+		else:
+			pass
+<br>
+调用`check_simpleInfo()`函数查阅某邮件的简略信息，包括邮件来自谁，发送时间，主题等。
+调用`check_detailInfo()`函数来查看邮件的详细信息也就是邮件内容。当然都看得出来`get_mail_simpleInfo_from_id()`才是主要进行了获取内容的工作,下面来看一下这个函数。
+<br>
+	def get_mail_simpleInfo_from_id(self, id): 
+        status, response = self.M.fetch(id,"(RFC822)")
+        mailText = response[0][1]
+        mail_message = email.message_from_string(mailText)
+        subject = unicode(email.Header.make_header(email.Header.decode_header(mail_message['subject'])))
+        mail_from = email.utils.parseaddr(mail_message["from"])[1]
+        mail_to = email.utils.parseaddr(mail_message["to"])[1]
+		print '['+mail_message['Date']+']'+'\n'+'From:'+mail_from+ ' To:'+mail_to+'\n'+'Subject:'+subject+'\n'
+        return self.get_first_text_block(mail_message)
+<br>
+由于我们在工作中会使用到中文，所以在这里我们还需要关注两个有可能产生乱码的地方，一个是邮件头部分在代码中使用了`email.Header`对其进行解码,`email.Header.decode_header(subject)`对邮件主体可能出现的乱码进行了处理。关于此处stackoverflow上有一热心的哥们坚定的表示像以往那样只是简单的对他们进行解码是不够的，因为此处的`mail_message['subject']`有可能回返回多个实体，而不仅仅是一个，所以为了保证数据的完整采用了列表解析循环获取数据，他强烈推荐我使用`subject = u''.join(unicode(strs,t) for strs,t in email.Header.decode_header(mail_message['subject']))`,从这句代码可以看出python是多么省事儿的语言。但是这里还是不够严密的，那就是有些邮件在发送的时候没有指定明确的编码格式，这就导致了在一定的几率下，`email.Header.decode_header()`会返回`None`作为第二个返回值，会造成`unicode()`的失败，于是此大神在报告bug的时候推荐给我了上面的那句代码，`subject = unicode(email.Header.make_header(email.Header.decode_header(mail_message['subject'])))`。
+
+显然`get_first_text_block()`函数对邮件的主要内容进行处理，用来判断这个作为参数传进来的邮件实体的主体类型是哪个？如果还是multipart类型还需要继续分解一下最后的目标就是将他们全部分解为text类型。
+<br>
+	def get_first_text_block(self,email_message_instance):
         maintype = email_message_instance.get_content_maintype()
         if maintype == 'multipart':
             for part in email_message_instance.get_payload():
@@ -60,93 +92,69 @@ tags: [Python, jekyll, 胡说]
                     return part.get_payload(decode=True).strip()
         elif maintype == 'text':
             return email_message_instance.get_payload(decode=True).strip()
-
-    def get_mail_simpleInfo_from_id(self, id): 
-        status, response = self.M.fetch(id,"(RFC822)")
-        mailText = response[0][1]
-        mail_message = email.message_from_string(mailText)
-        subject = unicode(email.Header.make_header(email.Header.decode_header(mail_message['subject'])))
-        mail_from = email.utils.parseaddr(mail_message["from"])[1]
-        mail_to = email.utils.parseaddr(mail_message["to"])[1]
-	print '['+mail_message['Date']+']'+'\n'+'From:'+mail_from+ ' To:'+mail_to+'\n'+'Subject:'+subject+'\n'
-        return self.get_first_text_block(mail_message)
-
-    def get_mail_content(self, content):
-    	print 'MailContent:'+'\n'+content
-    
-    def check_simpleInfo(self, mailCounts):
-    	print "Input 'y' to check the lasted UNread mail. Other cmds to abandon!"
-    	while True:
-		argv = string.split(raw_input('$====>'))
-		if len(argv)!=0:
-			if argv[0] == 'y':
-				mailBody = self.get_mail_simpleInfo_from_id(mailCounts)
-				return mailBody
-			else:
-				return 0
-		else:
-			pass
-	else:
-		pass
-
+<br>
+其中`part.get_payload(decode=True)`函数对解析的邮件主要内容进行了解码，避免将一些乱七八糟的mojibake直接显示在你的终端里。说到这里不能不再啰嗦一件事，虽然很不起眼但是却很容易再这里出问题，那就是你terminal的编码格式，如果你的编码格式不支持中文或者utf-8的画python会报错的，没错你没有看错，terminal的编码错误会造成python的崩溃，我就遇到了此问题，虽说Mac的terminal是支持各种编码的但是正巧我做这一部分的时候是在使用公司的Thinkpad，于是在window的CMD下就果断悲剧了，直接报了python的编码不能找到定义字符集(UnicodeDecodeError),所以此处是需要注意的。
+<br>
+下面的这个函数其实没有什么必要说的，将其单独拿出来完全是为了业务逻辑上的考虑，此函数中传入的参数就是`get_first_text_block()`函数的返回值，在调用层的时候将其赋值给了`mailBody`，可以参见上面的`receive_mail`函数。
+<br>
     def check_detailInfo(self, mailBody):
     	print "Input 'y' to check the detailInfo. Other cmds to abandon!"
-	while True:
+		while True:
     		args = string.split(raw_input('$====>'))
-		if len(args)!=0:
-			if args[0] == 'y':
-				self.get_mail_content(mailBody)
-				return
+			if len(args)!=0:
+				if args[0] == 'y':
+					self.get_mail_content(mailBody)
+					return
+				else:
+					break
 			else:
-				break
-		else:
-			pass
+				pass
     	else:
     		pass	
 
-稍微解读一下，调用`check_simpleInfo()`函数查阅某邮件的简略信息，包括邮件来自谁，发送时间，主题等。
-调用`check_detailInfo()`函数来查看邮件的详细信息也就是邮件内容。当然都看得出来`get_mail_simpleInfo_from_id()`才是主要进行了获取内容的工作。`get_first_text_block()`函数用来判断这个作为参数传进来的邮件实体的主体类型是哪个？如果还是multipart类型还需要继续分解一下最后的目标就是将他们全部分解为text类型。
-由于我们在工作中会使用到中文，所以在这里我们还需要关注两个有可能产生乱码的地方，一个是邮件头部分在代码中使用了`email.Header`对其进行解码,`email.Header.decode_header(subject)`对邮件主体可能出现的乱码进行了处理。关于此处stackoverflow上有一热心的哥们坚定的表示像以往那样只是简单的对他们进行解码是不够的，因为此处的`mail_message['subject']`有可能回返回多个实体，而不仅仅是一个，所以为了保证数据的完整采用了列表解析循环获取数据，他强烈推荐我使用`subject = u''.join(unicode(strs,t) for strs,t in email.Header.decode_header(mail_message['subject']))`,从这句代码可以看出python是多么省事儿的语言。但是这里还是不够严密的，那就是有些邮件在发送的时候没有指定明确的编码格式，这就导致了在一定的几率下，`email.Header.decode_header()`会返回`None`作为第二个返回值，会造成`unicode()`的失败，于是此大神在报告bug的时候推荐给我了上面的那句代码，`subject = unicode(email.Header.make_header(email.Header.decode_header(mail_message['subject'])))`。`part.get_payload(decode=True)`函数对解析的邮件主要内容进行了解码，避免将一些乱七八糟的mojibake直接显示在你的终端里。说到这里不能不再啰嗦一件事，虽然很不起眼但是却很容易再这里出问题，那就是你terminal的编码格式，如果你的编码格式不支持中文或者utf-8的画python会报错的，没错你没有看错，terminal的编码错误会造成python的崩溃，我就遇到了此问题，虽说Mac的terminal是支持各种编码的但是正巧我做这一部分的时候是在使用公司的Thinkpad，于是在window的CMD下就果断悲剧了，直接报了python的编码不能找到定义字符集(UnicodeDecodeError),所以有人要尝试的话此处是需要注意的。
+	def get_mail_content(self, content):
+    	print 'MailContent:'+'\n'+content #直接将内容显示到了终端
+<br>
 上面的代码就是在接受邮件时用到的主要函数，当然还有其他的一些像修改、新增、删除收件箱，按照发送者筛选查询等功能就没有贴上来了。
 <br>
 ###下面看看创建一个邮件并发送给一个收件列表的主要实现吧
 <br>
-首先我要告诉你的是，想要发一封邮件也需要几个步骤。第一，同样你要成功的连接到邮箱的服务器(我使用的是SMTP协议，这个协议地球人都知道啦估计)。第二，同样要使用自己的信息成功登陆取得权限，在这要多说一点，Gmail的安全验证做的更为完善，普通的SSL不能满足它了，在你连通server之后必须要使用STARTTSL协议来将之前取得连接的SSL来升级为更加安全的加密通道，只有这样才能登陆成功，否则会提示你server的AUTH授权失败。具体的原因有兴趣的还可以参看[这篇文章](https://www.fastmail.fm/help/technology_ssl_vs_tls_starttls.html)，老外都把事情讲得很详细。第三，此后你就可以畅快的发送邮件了。
+首先我要告诉你的是，想要发一封邮件也需要三个步骤。第一，同样你要成功的连接到邮箱的服务器(我使用的是SMTP协议，这个协议地球人都知道啦估计)。第二，同样要使用自己的信息成功登陆取得权限，在这要多说一点，Gmail的安全验证做的更为完善，普通的SSL不能满足它了，在你连通server之后必须要使用STARTTSL协议来将之前取得连接的SSL来升级为更加安全的加密通道，只有这样才能登陆成功，否则会提示你server的AUTH授权失败。具体的原因有兴趣的还可以参看[这篇文章](https://www.fastmail.fm/help/technology_ssl_vs_tls_starttls.html)，老外都把事情讲得很详细。第三，此后你就可以畅快的发送邮件了。
 <br>
     def send_new_mail(self):
-	send_to_str = raw_input("Input Email address that you want send your mail to,"+'\n'+\
-	"if you have multiple address, seperate them with comma."+'\n'+\
-	'$===>')
-	send_list = send_to_str.split(',')
-	send_subject  = raw_input('The Subject of new mail:')
-	send_content  = raw_input('The Content of new mail:')
+		send_to_str = raw_input("Input Email address that you want send your mail to,"+'\n'+\
+		"if you have multiple address, seperate them with comma."+'\n'+\
+		'$===>')
+		send_list = send_to_str.split(',')
+		send_subject  = raw_input('The Subject of new mail:')
+		send_content  = raw_input('The Content of new mail:')
     	sendMailInstance = sendMail.SendMail(send_list, send_subject, send_content)
-	if sendMailInstance.send_mail():
-		print 'New mail send success!'
-	else:
-		print 'New mail send failed!'
+		if sendMailInstance.send_mail():
+			print 'New mail send success!'
+		else:
+			print 'New mail send failed!'
     	return
 <br>
 同样上面的代码出现在调用层。实现出现在sendMail.py文件中。
 <br>
     def send_mail(self):  
-	me="hello"+"<"+self.mail_user+"@"+self.mail_postfix+">"  
-	msg = MIMEText(self.content,'plain','utf-8')  
-	msg['Subject'] = Header(self.subject, 'utf-8')
-	msg['From'] = me      
-	msg['To'] = ";".join(self.send_list)  
-	msg['Date'] = email.Utils.formatdate()
-	try:  
-		smtpServer = smtplib.SMTP()  
-		smtpServer.connect(self.mail_host)  
-		smtpServer.starttls()
-		smtpServer.login(self.mail_user,self.mail_pass)  
-		smtpServer.sendmail(me, self.send_list, msg.as_string())  
-		smtpServer.close()  
-		return True 
-	except Exception, e:  
-		print str(e)  
-		return False  
+		me="hello"+"<"+self.mail_user+"@"+self.mail_postfix+">"  
+		msg = MIMEText(self.content,'plain','utf-8')  
+		msg['Subject'] = Header(self.subject, 'utf-8')
+		msg['From'] = me      
+		msg['To'] = ";".join(self.send_list)  
+		msg['Date'] = email.Utils.formatdate()
+		try:  
+			smtpServer = smtplib.SMTP()  
+			smtpServer.connect(self.mail_host)  
+			smtpServer.starttls()
+			smtpServer.login(self.mail_user,self.mail_pass)  
+			smtpServer.sendmail(me, self.send_list, msg.as_string())  
+			smtpServer.close()  
+			return True 
+		except Exception, e:  
+			print str(e)  
+			return False  
 <br>
 代码中`smtpServer.starttls()`此句就是我上提到过的升级安全加密策略的语句，刚知道仅用一句代码就实现的时候还是被Python强大的库惊呆了。其中，不加`msg['Date'] = email.Utils.formatdate()`这句的话发送出的邮件默认时间为：UTC-07:00 休斯顿、底特律时间，加上之后恢复正常，此问题的原因我还没有详细追究。
 <br>
@@ -162,4 +170,4 @@ tags: [Python, jekyll, 胡说]
 <br>
 ![pymail02](/assets/themes/twitter/img/blogpic/pymail02.png)
 <br>
-你能相信一个菜鸟屌丝学生程序员在一段很短的时间内就从完全没概念到完成编码加debug么？你以为屌丝逆袭了，错，是Python太Powerful了！当然还有更加Powerful的Google在帮我，虽然它时不时上不去还得在.hk .sg .com/ncr之间来回换着用，但Google的存在至少对程序员来说就是个太美好的存在了！又跑题了。。。
+你能相信一个菜鸟屌丝学生程序员在一段很短的时间内就从完全没概念到完成编码加debug么？你以为屌丝逆袭了，错，是Python太Powerful了！当然还有更加Powerful的Google在帮我，虽然它时不时上不去还得在.hk .sg .com/ncr之间来回换着用，但Google的存在至少对程序员来说就是个太美好的存在了。
