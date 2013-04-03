@@ -18,6 +18,7 @@ body {
 	font: .93em/1.5 Verdana, Arial, "微软雅黑";
 	color: #555;
 	overflow-x: hidden;
+	background: 'url(/assets/themes/twitter/img/body.jpg) fixed'
 }
 a {
 	color: #03a7eb;
