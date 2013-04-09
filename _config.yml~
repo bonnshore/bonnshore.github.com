@@ -10,8 +10,8 @@ pygments: true
 # Themes are encouraged to use these universal variables 
 # so be sure to set them if your theme uses them.
 #
-title : Bonnshore's Script
-tagline: Manshow or Geek
+title : Bonnshore's Doodle
+tagline: ManShow or Geek
 author :
   name : bonnshore
   email : bonnshore@gmail.com
