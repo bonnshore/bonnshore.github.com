@@ -1,4 +1,4 @@
-/* html */
+﻿/* html */
 html, body, address, blockquote, div, dl, form, h1, h2, h3, h4, h5, h6, ol, p, pre, table, ul,
 dd, dt, li, tbody, td, tfoot, th, thead, tr, button, del, ins, map, object,
 a, abbr, acronym, b, bdo, big, br, cite, code, dfn, em, i, img, kbd, q, samp, small, span,
@@ -112,7 +112,7 @@ textarea:focus, input[type=password]:focus, input[type=text]:focus, textarea:hov
 /* block */
 
 .block, .photo, article.post, #sidebar .widget, .post>article, #relative-articles, #comments_section, .commentlist>li, #respond, #footer, .post-nav a, #more-hint, .comment-float-list {
-    background: rgba(255, 255, 255, .9);
+    background: rgba(255, 255, 255, 1);
 	position: relative;
 	margin: 10px 10px 20px;
 	padding: 10px;
