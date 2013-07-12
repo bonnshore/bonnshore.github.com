@@ -30,7 +30,6 @@ tags: [Python, funny]
 	 
 	APP_KEY = '1******671' #youre app key 
 	APP_SECRET = 'e623c*************bfa30b23' #youre app secret  
-	# callback url, your must set this URL in your "my application->appInfos-> advanced  info"
 	CALLBACK_URL = 'http://ww****shore.com'
 	ACCOUNT = 'bo******@gmail.com'#your email address
 	PASSWORD = '*********'     #your pw
