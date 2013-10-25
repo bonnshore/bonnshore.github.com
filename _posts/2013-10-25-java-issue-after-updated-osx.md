@@ -1,7 +1,7 @@
 ---
 layout: post
 date: "2013-10-25 12:25:PM"
-title: "OSX更新后JRE6被删除后引发了问题"
+title: "OSX更新后JRE6被删除引发了问题"
 description: "最近升级系统到最新的OS X Mavericks了，没有重做系统只是直接选择了升级，所以之前的App都没有受到什么大的影响，用起来都很正常，昨天无意间打开eclipse后发现弹出一对话框，意思大致是想要打开我必须要有JRE6，你现在没有，装一个不？我当时就不会了。"
 weather: Sunny
 category: tools
