@@ -3,9 +3,9 @@
 <script src="/assets/js/scrolltopcontrol.js"></script>
 <script src="/assets/js/autotag.js"></script>
 <!--<script src="/assets/js/autobkg.js"></script>-->
-<script language="javascript" type="text/javascript">
+<!--<script language="javascript" type="text/javascript">
     autobkg.init()	
-</script>
+</script>-->
 <script language="javascript" type="text/javascript">
     autotag.init()	
 </script>

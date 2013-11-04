@@ -56,7 +56,7 @@
              </section>
 
             <section id="categories" class="widget">
-	    <h4>Categories~</h4>
+	    <h4>Categories</h4>
 	    <ul>
               {% assign categories_list = site.categories %}
               {% include JB/categories_list %}
@@ -64,7 +64,7 @@
              </section>
              <section id="tags" class="widget">
 	     <div id="tagDiv">
-	     <h4>Tags~</h4>
+	     <h4>Tags</h4>
 	    <ul class="tag_box inline">
 	      {% assign tags_list = site.tags %}  
 	      {% include JB/tags_list %}
@@ -72,11 +72,20 @@
              </div>
              </section>
 	     <section id="douban_fm" class="widget" style="width:65%">
-	     <h4>FM~</h4>
+	     <h4>FM</h4>
 	     <div style="margin-left: 20px">
 	     {% include custom/douban_fm %}
 	     </div>
 	     </section>
+	     <section id="tags" class="widget" style="width:65%">
+	     <div id="tagDiv">
+	     <h4>小伙伴</h4>
+	    <ul class="tag_box inline">
+	     {% include custom/friends %}
+	    </ul>
+             </div>
+             </section>
+
          </div>
          <footer id="footer">
               <p>&copy; {{ site.author.name }} 2013
