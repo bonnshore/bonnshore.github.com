@@ -23,7 +23,6 @@ tags: [Python, funny]
 <br>
 下面就是代码了：
 
-<br>
 		from weibo import APIClient
 		from re import split
 		import urllib,httplib
@@ -59,7 +58,7 @@ tags: [Python, funny]
 		    results = client.post.statuses__update(status=post_contents)
 		    return results
 
-<br>
+
 从上面的代码中，有一点需要注意一下那就是，get_code(),这个函数是获取了授权码，在本来的SDK中是没有这一步的，但是少了这一步我们就需要人工的在浏览区的网页上点击连接授权，而我却只想在命令行里面完成所有的事情，所以才有了这个函数，函数中是使用了httplib包模拟了web请求，并且处理了返回的信息，从而获取到了授权码。
 
 <br>
@@ -74,7 +73,7 @@ tags: [Python, funny]
 
 <br>
 后来我选择的[bear的python－twitter包](https://github.com/bear/python-twitter)，安装好以后特别好用，使我的代码变的很少了，而且也兼容代理的网络条件，下面是代码：
-<br>
+
 		import twitter
 		def post_twitter(tweets):
 		    print "tweets posting..."
@@ -85,7 +84,7 @@ tags: [Python, funny]
 		    results = tw_api.PostUpdate(tweets)
 		    return results
 
-<br>
+
 从上面的代码可以看出，这个SDK多么的省事儿，除了让使用者显得没有水平之外再没有别的缺点了。
 <br>
 至于为什么不弄一个Fb版本的，是因为Fb和tw的关系实在是比较暧昧，我绑定了从推特自动同步状态到Fb的服务，所以我的推特一有更新Fb就会跟上，我也就没有必要再做没意义的事情了。
