@@ -24,40 +24,40 @@ tags: [Python, funny]
 下面就是代码了：
 
 <br>
-	from weibo import APIClient
-	from re import split
-	import urllib,httplib
-	 
-	APP_KEY = '1******671' #youre app key 
-	APP_SECRET = 'e623c*************bfa30b23' #youre app secret  
-	CALLBACK_URL = 'http://ww****shore.com'
-	ACCOUNT = 'bo******@gmail.com'#your email address
-	PASSWORD = '*********'     #your pw
-	       
-	#for getting the code contained in the callback url
-	def get_code(url):
-		conn = httplib.HTTPSConnection('api.weibo.com')
-		postdata = urllib.urlencode     ({'client_id':APP_KEY,'response_type':'code','redirect_uri':CALLBACK_URL,'action':'submit','userId':ACCOUNT,'passwd':PASSWORD,'isLoginSina':0,'from':'','regCallback':'','state':'','ticket':'','withOfficalFlag':0})
-		conn.request('POST','/oauth2/authorize',postdata,{'Referer':url,'Content-Type': 'application/x-www-form-urlencoded'})
-		res = conn.getresponse()
-		location = res.getheader('location')
-		code = location.split('=')[1]
-		conn.close()
-		return code
-									     
-	def post_weibo(post_contents):
-	    print "weibo posting..."
-	    #for getting the authorize url
-	    client = APIClient(app_key=APP_KEY, app_secret=APP_SECRET, redirect_uri=CALLBACK_URL)
-	    url = client.get_authorize_url()
-	    code = get_code(url)
-	    r = client.request_access_token(code)
-	    access_token = r.access_token # The token return by sina
-	    expires_in = r.expires_in 
-	    #save the access token
-	    client.set_access_token(access_token, expires_in)
-	    results = client.post.statuses__update(status=post_contents)
-	    return results
+		from weibo import APIClient
+		from re import split
+		import urllib,httplib
+		 
+		APP_KEY = '1******671' #youre app key 
+		APP_SECRET = 'e623c*************bfa30b23' #youre app secret  
+		CALLBACK_URL = 'http://ww****shore.com'
+		ACCOUNT = 'bo******@gmail.com'#your email address
+		PASSWORD = '*********'     #your pw
+		       
+		#for getting the code contained in the callback url
+		def get_code(url):
+			conn = httplib.HTTPSConnection('api.weibo.com')
+			postdata = urllib.urlencode     ({'client_id':APP_KEY,'response_type':'code','redirect_uri':CALLBACK_URL,'action':'submit','userId':ACCOUNT,'passwd':PASSWORD,'isLoginSina':0,'from':'','regCallback':'','state':'','ticket':'','withOfficalFlag':0})
+			conn.request('POST','/oauth2/authorize',postdata,{'Referer':url,'Content-Type': 'application/x-www-form-urlencoded'})
+			res = conn.getresponse()
+			location = res.getheader('location')
+			code = location.split('=')[1]
+			conn.close()
+			return code
+										     
+		def post_weibo(post_contents):
+		    print "weibo posting..."
+		    #for getting the authorize url
+		    client = APIClient(app_key=APP_KEY, app_secret=APP_SECRET, redirect_uri=CALLBACK_URL)
+		    url = client.get_authorize_url()
+		    code = get_code(url)
+		    r = client.request_access_token(code)
+		    access_token = r.access_token # The token return by sina
+		    expires_in = r.expires_in 
+		    #save the access token
+		    client.set_access_token(access_token, expires_in)
+		    results = client.post.statuses__update(status=post_contents)
+		    return results
 
 <br>
 从上面的代码中，有一点需要注意一下那就是，get_code(),这个函数是获取了授权码，在本来的SDK中是没有这一步的，但是少了这一步我们就需要人工的在浏览区的网页上点击连接授权，而我却只想在命令行里面完成所有的事情，所以才有了这个函数，函数中是使用了httplib包模拟了web请求，并且处理了返回的信息，从而获取到了授权码。
@@ -74,17 +74,16 @@ tags: [Python, funny]
 
 <br>
 后来我选择的[bear的python－twitter包](https://github.com/bear/python-twitter)，安装好以后特别好用，使我的代码变的很少了，而且也兼容代理的网络条件，下面是代码：
-
 <br>
-	import twitter
-	def post_twitter(tweets):
-	    print "tweets posting..."
-	    tw_api = twitter.Api(consumer_key='95otEcQ***********xDQQ',
-			     consumer_secret='1jUeoOHa********************RducGal1iA',
-			     access_token_key='3171230***********************LQZevkJD5spEi94',
-			     access_token_secret='2QjrDux***********************VRb7JBKaDGMtmI')
-	    results = tw_api.PostUpdate(tweets)
-	    return results
+		import twitter
+		def post_twitter(tweets):
+		    print "tweets posting..."
+		    tw_api = twitter.Api(consumer_key='95otEcQ***********xDQQ',
+				     consumer_secret='1jUeoOHa********************RducGal1iA',
+				     access_token_key='3171230***********************LQZevkJD5spEi94',
+				     access_token_secret='2QjrDux***********************VRb7JBKaDGMtmI')
+		    results = tw_api.PostUpdate(tweets)
+		    return results
 
 <br>
 从上面的代码可以看出，这个SDK多么的省事儿，除了让使用者显得没有水平之外再没有别的缺点了。
