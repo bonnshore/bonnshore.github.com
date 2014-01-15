@@ -14,15 +14,16 @@ tags: [useful东东]
 ###完全卸载MySQL For OSX
 <br>
 先停止所有MySQL有关进程:
-	sudo rm /usr/local/mysql
-	sudo rm -rf /usr/local/mysql*
-	sudo rm -rf /Library/StartupItems/MySQLCOM
-	sudo rm -rf /Library/PreferencePanes/My*
-	vim /etc/hostconfig and removed the line MYSQLCOM=-YES-
-	rm -rf ~/Library/PreferencePanes/My*
-	sudo rm -rf /Library/Receipts/mysql*
-	sudo rm -rf /Library/Receipts/MySQL*
-	sudo rm -rf /var/db/receipts/com.mysql.*
+
+		sudo rm /usr/local/mysql
+		sudo rm -rf /usr/local/mysql*
+		sudo rm -rf /Library/StartupItems/MySQLCOM
+		sudo rm -rf /Library/PreferencePanes/My*
+		vim /etc/hostconfig and removed the line MYSQLCOM=-YES-
+		rm -rf ~/Library/PreferencePanes/My*
+		sudo rm -rf /Library/Receipts/mysql*
+		sudo rm -rf /Library/Receipts/MySQL*
+		sudo rm -rf /var/db/receipts/com.mysql.*
 <br>
 Over.
 <br>
@@ -36,9 +37,11 @@ Over.
 2. 在my.cnf文件的［client］后面添加一句default-character-set=utf8
 
 3. 在［mysqld］后面添加如下三句：
+
 		default-storage-engine=INNODB
 		character-set-server=utf8
 		collation-server=utf8_general_ci
+		
 4. 保存退出,reboot MySQL就可以了
 <br>
 以上。
